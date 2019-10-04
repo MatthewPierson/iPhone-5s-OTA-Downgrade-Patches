@@ -72,9 +72,9 @@ As far as I know, you don’t pass boot args to iBSS but I might be wrong. If yo
 Next, use img4tool to do some cool shit.
 
 
-     ./img4tool -p ibss.im4p –tag ibss iBoot-hax ibss.pwn
+     ./img4tool -p ibss.im4p –tag ibss --info iBoot-hax ibss.pwn
     
-    ./img4tool -p ibec.im4p –tag ibec iBoot-hax ibec.pwn
+    ./img4tool -p ibec.im4p –tag ibec --info iBoot-hax ibec.pwn
 
 ----------------------------------------------------------------------
 
@@ -169,11 +169,11 @@ You need to grab the pwned iBSS and iBEC that you created before and rename them
 
 ----------------------------------------------------------------------
 
-Now the shsh you downloaded will not match the current apnonce of the device. My way of getting around this is attempting a restore with the mismatched shsh, finding the current apnonce of the device, and grabbing shsh with the current apnonce of the device. Run 
+Now the shsh you downloaded will not match the current apnonce of the device. ~~My way of getting around this is attempting a restore with the mismatched shsh, finding the current apnonce of the device,~~ Use igetnonce to get the apnonce of the device and grab shsh with the current apnonce of the device (Credit to [rA9](https://twitter.com/BarisUlasCukur) for reminidng me that igetnonce is a thing). Run 
 
-    ./futurerestore -t “your-current-shsh” -b baseband from 10.3.3 ipsw -p Buildmanifest.plist -s sep from 10.3.3 ipsw -m Alitek's_OTA_buildmanifest.plist 10.3.3.ipsw”
+    ./igetnonce
 
-When you run this, it will fail and say apticket nonce does not match devices. It will give a string of numbers with spaces in between. Copy paste these muber and remove the spaces in between them leaving you with a long number. That is your current apnonce. 
+It will print out the apnonce for the device.
 
 Now use this apnonce and request a new ticket. 
 
@@ -195,5 +195,5 @@ Phone should now restore to 10.3.3 with no issues! Make sure you have a good amo
 If you run into any issues, which I expect as this guide/tutorial probably contains some errors, just feel free to either comment here or dm me on [twitter](https://twitter.com/mosk_i). Though i'm more likely to reply here because twitter sucks.
 
 
-Credits go to: [axi0mx](https://twitter.com/axi0mX) (checkm8), [Tihmstar](https://twitter.com/tihmstar) (img4tool, futurerestore, iBoot64patcher, liboffsetfinder64 and probably more), [Linus](https://twitter.com/LinusHenze) (ipwndfu fork with removedsigpatches), [alitek12](https://twitter.com/alitek12) (OTA Buildmanifest for A7 devices) and [xerub](https://twitter.com/xerub ) (img4lib).
+Credits go to: [axi0mx](https://twitter.com/axi0mX) (checkm8), [Tihmstar](https://twitter.com/tihmstar) (img4tool, futurerestore, iBoot64patcher, liboffsetfinder64 and probably more), [Linus](https://twitter.com/LinusHenze) (ipwndfu fork with removedsigpatches), [alitek12](https://twitter.com/alitek12) (OTA Buildmanifest for A7 devices), [xerub](https://twitter.com/xerub ) (img4lib) and [S0uthwes](https://twitter.com/s0uthwes)(futurerestore fork).
 ----------------------------------------------------------------------
