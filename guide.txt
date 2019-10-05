@@ -72,9 +72,9 @@ As far as I know, you don’t pass boot args to iBSS but I might be wrong. If yo
 Next, use img4tool to do some cool shit.
 
 
-     ./img4tool -p ibss.im4p –tag ibss --info iBoot-hax ibss.pwn
+     ./img4tool -p ibss.im4p --tag ibss --info iBoot-hax ibss.pwn
     
-    ./img4tool -p ibec.im4p –tag ibec --info iBoot-hax ibec.pwn
+    ./img4tool -p ibec.im4p --tag ibec --info iBoot-hax ibec.pwn
 
 ----------------------------------------------------------------------
 
