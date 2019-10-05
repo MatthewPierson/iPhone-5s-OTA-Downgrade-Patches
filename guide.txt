@@ -11,7 +11,7 @@ COMPATIBILITY: At the moment only the iPhone 5s (s5l8960x) is supported. I will 
 ----------------------------------------------------------------------
 Note that this IS an untethered downgrade as we are using OTA blobs meaning that the install of iOS is signed and won't need to be booted from pwndfu mode everytime unless you are booting in verbose mode.
 ----------------------------------------------------------------------
-Currently only the iPhone6,2 has patch files as this is the 5s that I have. If requested I can create patch files for the iPhone6,1 but you can do those yourself if you want to.
+~~Currently only the iPhone6,2 has patch files as this is the 5s that I have. If requested I can create patch files for the iPhone6,1 but you can do those yourself if you want to.~~ Turns out I'm stupid and 6,1 shares iBSS/iBEC with 6,2. Have uploaded new patches to fix another issue but if someone with a 6,1 can test that'd be great.
 ----------------------------------------------------------------------
 I am planning on updating this guide soon to show how to boot in verbose mode. The way I use currently isn't amazing so I want to figure that out before I post how to.
 ----------------------------------------------------------------------
@@ -82,7 +82,7 @@ Now you need to use img4tool again but with some shsh. Lets get the shsh for 10.
 
 Download and install the latest tsschecker if you don’t have it already. Then run 
 
-    ./tsschecker -e “your-ecid” -s -o -i 9.9.10.3.3 –buildid 14G60 -d iPhone6,2(or whatever your device is) –save-path “/where/futurerestore/is” 
+    ./tsschecker -e “your-ecid” -s -o -i 9.9.10.3.3 --buildid 14G60 -d iPhone6,2(or whatever your device is) --save-path “/where/futurerestore/is” 
 
  This will save shsh for your device for 10.3.3 to where you specified . 
 
@@ -137,7 +137,7 @@ to get into pwndfu mode. Now this will fail a lot of times as that is just the n
 
 Once in pwndfu mode, run 
 
-    python rm rmsigchks.py
+    python rmsigchks.py
 
 and if all goes well it should return with 
 
@@ -179,13 +179,13 @@ Now use this apnonce and request a new ticket.
 
 Run 
 
-    ./tsschecker -e “your-ecid” -s -o -i 9.9.10.3.3 –buildid 14G60 -d iPhone6,2(or whatever your device is) –save-path “/where/futurerestore/is” –apnonce “the number we just grabbed” 
+    ./tsschecker -e “your-ecid” -s -o -i 9.9.10.3.3 --buildid 14G60 -d iPhone6,2(or whatever your device is) --save-path “/where/futurerestore/is” --apnonce “the number we just grabbed” 
 
 This will grab shsh with the correct apnonce that your device currently has!
 
 Now run futurerestore again but with the new shsh 
 
-    ./futurerestore -t “new-shsh-file” -b baseband from 10.3.3 ipsw -p Alitek's_OTA_buildmanifest.plist -s sep from 10.3.3 ipsw -m Buildmanifest.plist 10.3.3.ipsw
+    ./futurerestore -t “new-shsh-file” -b baseband from 10.3.3 ipsw -p Alitek's_OTA_buildmanifest.plist -s sep from 10.3.3 ipsw -m Alitek's_OTA_buildmanifest.plist 10.3.3.ipsw
 
 
 Phone should now restore to 10.3.3 with no issues! Make sure you have a good amount of storage availible when futurerestoreing, I ran into an issue where the restore failed because I ran out of SSD space.
