@@ -109,7 +109,7 @@ If you don’t then run
 
     bspatch iBSS.iphone6.RELEASE.im4p ibss.patched ibss.normal.patch
 
-Now do the same for iBEC. 
+Now do the same for iBEC. I have since added more patches, use i***.verbose.restore.patch to use verbose mode while restoring, i***.verbose.patch to boot tethered verbose mode (will add guide soon) or use i***.normal.patch to just patch normally without verbose.
 
 Note: I found that for switching from pwndfu to pwnrecovery later on only the verbose iBSS and iBEC worked so if irecovery fails or stops when sending iBEC then trying using the verbose files instead.
 ----------------------------------------------------------------------
