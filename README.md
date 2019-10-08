@@ -1,10 +1,3 @@
-# iPhone 5s OTA Downgrade Pateches
- Patches for downgrading an iPhone 5s to 10.3.3 with OTA blobs.
-
-iBSS/iBEC Patches are only for iPhone6,2 and iPhone6,1 - NON OTHER AT THIS STAGE.
-
-Futurerestore patch is for V246/V245, the latest version and latest release.
-
 This guide assumes you have the latest liboffsetfinder64, iBoot64patcher, img4tool, img4lib, irecovery, tsschecker, bspatch, python and all the dependencies installed and updated to the latest version. I'm not going to help you install/compile these programs because I don't have time to help everyone sadly. It should be straight forward to compile and install everything, just google things and read errors if you get them. 
 ----------------------------------------------------------------------           
 If this is shit or doesn't make sense I'm sorry, I wrote this at 3am and on 3 hours of sleep :) 
@@ -116,7 +109,11 @@ If you don’t then run
 
     bspatch iBSS.iphone6.RELEASE.im4p ibss.patched ibss.normal.patch
 
-Now do the same for iBEC. I have since added more patches, use i***.verbose.restore.patch to use verbose mode while restoring, i***.verbose.patch to boot tethered verbose mode (will add guide soon) or use i***.normal.patch to just patch normally without verbose.
+Now do the same for iBEC.
+
+ ~~I have since added more patches, use ixxx.verbose.restore.patch to use verbose mode while restoring, ixxx.verbose.patch to boot tethered verbose mode (will add guide soon) or~~ 
+
+Use ixxx.normal.patch to just patch normally without verbose. Currently verbose restore is broken and verbose boot is working but tedious and slow. Once I get verbose restore working I'll update github and this guide and once i get a easier way to verbose boot I'll add that as well. For now just use the normal patch files.
 
 Note: I found that for switching from pwndfu to pwnrecovery later on only the verbose iBSS and iBEC worked so if irecovery fails or stops when sending iBEC then trying using the verbose files instead.
 ----------------------------------------------------------------------
